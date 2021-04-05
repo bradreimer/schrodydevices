@@ -4,6 +4,13 @@
     "parameters": {
         "iotHubName": {
             "value": "iot-schrodydevices-dev"
+        },
+        "resourceTags": {
+            "value": {
+                "Environment": "Dev",
+                "Owner": "breimer123@gmail.com",
+                "Project": "SchrodyDevices"
+            }
         }
     }
 }

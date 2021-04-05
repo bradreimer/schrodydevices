@@ -22,29 +22,19 @@
         "description": "Specifies the name of the IoT Hub."
       }
     },
-    "iotHubSku": {
-      "type": "string",
-      "defaultValue": "F1",
-      "metadata": {
-        "description": "Specifies the IotHub SKU."
-      }
-    },
-    "iotHubCapacityUnits": {
-      "type": "int",
-      "minValue": 1,
-      "maxValue": 1,
-      "defaultValue": 1,
-      "metadata": {
-        "description": "Specifies the number of provisioned IoT Hub units. Restricted to 1 unit for the F1 SKU. Can be set up to maximum number allowed for subscription."
-      }
-    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "Location for all resources."
       }
-    }
+    },
+    "resourceTags": {
+        "type": "object",
+        "defaultValue": {
+            "Environment": "Dev"
+        }
+    },
   },
   "variables": {
     "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
@@ -55,6 +45,7 @@
       "apiVersion": "2019-06-01",
       "name": "[variables('storageAccountName')]",
       "location": "[parameters('location')]",
+      "tags": "[parameters('resourceTags')]",
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },
@@ -66,9 +57,10 @@
       "apiVersion": "2020-08-01",
       "name": "[parameters('iotHubName')]",
       "location": "[parameters('location')]",
+      "tags": "[parameters('resourceTags')]",
       "sku": {
-        "name": "[parameters('iotHubSku')]",
-        "capacity": "[parameters('iotHubCapacityUnits')]"
+        "name": "F1",
+        "capacity": "1"
       }
     }
   ],

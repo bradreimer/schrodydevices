@@ -1,2 +1,2 @@
 # schrodydevices
-Internet of Things experiments for https://bradreimer.ca
+Internet of Things experiments for https://bradreimer.com
